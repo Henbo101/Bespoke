@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BESPOKE Garden Play | Master Brand Guidelines</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* --- 00. SYSTEM VARIABLES --- */
+        :root {
+            /* The Heritage Palette */
+            --alabaster: #F7F6F2;
+            --charcoal: #232323;
+            --smoked-sage: #7A8B7C;
+            --portland-stone: #D1CEC5;
+
+            /* Typography */
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+
+            /* Spacing (Alabaster Space) */
+            --space-sm: 2rem;
+            --space-md: 4rem;
+            --space-lg: 8rem;
+            --space-xl: 12rem;
+        }
+
+        /* --- 01. RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--alabaster);
+            color: var(--charcoal);
+            font-family: var(--font-sans);
+            font-weight: 300;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+        }
+
+        /* --- 02. LAYOUT ARCHITECTURE --- */
+        .sidebar {
+            width: 25vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-right: 1px solid var(--portland-stone);
+            padding: var(--space-md);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: var(--alabaster);
+            z-index: 100;
+        }
+
+        .main-content {
+            margin-left: 25vw;
+            width: 75vw;
+            padding-bottom: var(--space-xl);
+        }
+
+        section {
+            padding: var(--space-xl) var(--space-md) 0 var(--space-md);
+            min-height: 80vh;
+        }
+
+        /* --- 03. TYPOGRAPHY --- */
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            font-weight: 400;
+        }
+
+        .brand-mark {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .sub-mark {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--smoked-sage);
+        }
+
+        .section-label {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--smoked-sage);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .section-label::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background-color: var(--smoked-sage);
+        }
+
+        .headline-xl {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: var(--space-md);
+            max-width: 900px;
+        }
+
+        .headline-md {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .body-lg {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            max-width: 700px;
+            color: #444;
+            margin-bottom: var(--space-sm);
+        }
+
+        .body-sm {
+            font-size: 0.9rem;
+            color: #666;
+            max-width: 500px;
+        }
+
+        /* --- 04. SIDEBAR NAVIGATION --- */
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--portland-stone);
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--charcoal);
+        }
+
+        .meta-text {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--smoked-sage);
+            line-height: 1.8;
+        }
+
+        /* --- 05. SECTION SPECIFICS --- */
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+            border-top: 1px solid var(--portland-stone);
+            padding-top: var(--space-sm);
+            margin-top: var(--space-lg);
+        }
+
+        .grid-asymmetric {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: var(--space-md);
+        }
+
+        .editorial-list {
+            list-style: none;
+            border-top: 1px solid var(--portland-stone);
+        }
+
+        .editorial-list li {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--portland-stone);
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 2rem;
+        }
+
+        .editorial-list h4 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .swatch-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: var(--space-md);
+        }
+
+        .swatch {
+            aspect-ratio: 1;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .swatch.alabaster { background-color: var(--alabaster); border: 1px solid var(--portland-stone); }
+        .swatch.charcoal { background-color: var(--charcoal); }
+        .swatch.sage { background-color: var(--smoked-sage); }
+        .swatch.stone { background-color: var(--portland-stone); }
+
+        .swatch-label { font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; }
+        .swatch-hex { font-size: 0.75rem; color: var(--smoked-sage); margin-top: 0.2rem; }
+
+        /* --- 06. PHOTOGRAPHY & IMAGE SYSTEM --- */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1rem;
+            margin-top: var(--space-md);
+        }
+
+        .photo-placeholder {
+            background-color: var(--portland-stone);
+            background-size: cover;
+            background-position: center;
+            filter: sepia(20%) saturate(70%) contrast(90%);
+        }
+
+        /*
+         * IMAGE CLASSES
+         * All images pull from two local asset folders:
+         *   assets/playhouse-imagery/  — Real photography (craft, structure, detail)
+         *   assets/ai-imagery/         — AI-generated lifestyle/atmosphere shots
+         *
+         * To swap an image: replace the file at the path below (keep the filename).
+         * Recommended: JPG, 1200px+ wide, <500KB optimised.
+         */
+        .img-hero {
+            height: 600px;
+            background-image: url('assets/playhouse-imagery/hero-structure.jpg');
+        }
+
+        .img-detail {
+            height: 290px;
+            background-image: url('assets/playhouse-imagery/interior-plywood-detail.jpg');
+        }
+
+        .img-lifestyle {
+            height: 290px;
+            background-image: url('assets/ai-imagery/garden-golden-hour-atmosphere.jpg');
+            margin-top: 1rem;
+        }
+
+        /* --- Additional image slots for future sections --- */
+        .img-cedar-shingles {
+            height: 400px;
+            background-image: url('assets/playhouse-imagery/cedar-shingle-closeup.jpg');
+        }
+
+        .img-workshop {
+            height: 400px;
+            background-image: url('assets/playhouse-imagery/workshop-craftsmanship.jpg');
+        }
+
+        .img-garden-wide {
+            height: 500px;
+            background-image: url('assets/ai-imagery/playhouse-in-landscaped-garden.jpg');
+        }
+
+        .img-child-texture {
+            height: 400px;
+            background-image: url('assets/ai-imagery/child-hands-on-timber-faceless.jpg');
+        }
+
+        .img-overcast-exterior {
+            height: 400px;
+            background-image: url('assets/ai-imagery/overcast-british-daylight-exterior.jpg');
+        }
+
+        .img-dappled-canopy {
+            height: 400px;
+            background-image: url('assets/ai-imagery/dappled-canopy-light-play.jpg');
+        }
+
+        /* --- 07. TYPE SPECIMEN --- */
+        .type-specimen {
+            border-top: 1px solid var(--portland-stone);
+            border-bottom: 1px solid var(--portland-stone);
+            padding: var(--space-md) 0;
+            margin-top: var(--space-md);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SIDEBAR NAVIGATION                         -->
+    <!-- ═══════════════════════════════════════════ -->
+    <aside class="sidebar">
+        <div>
+            <div class="brand-mark">BESPOKE</div>
+            <div class="sub-mark">Garden Play</div>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#strategy" class="nav-link">01. Brand Strategy</a></li>
+            <li><a href="#verbal" class="nav-link">02. Verbal Identity</a></li>
+            <li><a href="#visual" class="nav-link">03. Visual System</a></li>
+            <li><a href="#photography" class="nav-link">04. Art Direction</a></li>
+            <li><a href="#layout" class="nav-link">05. Grid & Layout</a></li>
+            <li><a href="#application" class="nav-link">06. Brand Application</a></li>
+        </ul>
+        <div class="meta-text">
+            Master Guidelines<br>Version 1.1<br>Honiton, UK
+        </div>
+    </aside>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- MAIN CONTENT                               -->
+    <!-- ═══════════════════════════════════════════ -->
+    <main class="main-content">
+
+        <!-- 01. BRAND STRATEGY -->
+        <section id="strategy">
+            <div class="section-label">01. Brand Strategy & Positioning</div>
+            <h2 class="headline-xl">We build architectural adventures.</h2>
+            <p class="body-lg">For design-conscious families who refuse to compromise on the aesthetic of their home, Bespoke Garden Play stands apart. We don't just build climbing frames; we build architectural adventures. Handcrafted luxury climbing frames with ply-lined interiors and cedar shingle roofs. Designed in the UK to outlast childhood.</p>
+
+            <div class="grid-2-col">
+                <div>
+                    <h3 class="headline-md">The Archetype</h3>
+                    <p class="body-sm"><strong>The Creator meets The Magician.</strong> We provide the flawless, Creator-driven structure, so the child can provide the Magician-driven wonder. Every structure is a masterclass in craftsmanship, safety, and style.</p>
+                </div>
+                <div>
+                    <h3 class="headline-md">The Pillars</h3>
+                    <ul style="list-style: none; padding: 0;" class="body-sm">
+                        <li style="margin-bottom: 1rem;"><strong>I. Handbuilt in the UK:</strong> Handcrafted by skilled carpenters in our workshop.</li>
+                        <li style="margin-bottom: 1rem;"><strong>II. Built to Outlast:</strong> We use only the finest, sustainably sourced, pressure-treated timber.</li>
+                        <li style="margin-bottom: 1rem;"><strong>III. The "Real House" Philosophy:</strong> We are pioneers of the ply-lined interior.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. VERBAL IDENTITY -->
+        <section id="verbal">
+            <div class="section-label">02. Verbal Identity & Messaging</div>
+            <h2 class="headline-xl">Not just a playhouse. A piece of your home.</h2>
+            <p class="body-lg">Our voice is the literary equivalent of a beautifully tailored linen suit: relaxed but impeccably structured. We are understated, evocative, authoritative, and timeless. We don't need to look down on high-street alternatives; our craftsmanship speaks for itself.</p>
+            <ul class="editorial-list" style="margin-top: var(--space-md);">
+                <li>
+                    <h4>The Lexicon</h4>
+                    <div class="body-sm">
+                        <strong>Words We Embrace:</strong> Playhouse, Playcentre, Climbing Frame, Play Castle, Architectural Adventures, The Signature Series, The Masterpiece Collection.<br><br>
+                        <strong>Words We Retire:</strong> Flat-pack, Shed, Plastic, Cheap, High-Street Alternatives. We do not compare; we simply state our excellence.
+                    </div>
+                </li>
+                <li>
+                    <h4>The Pitch</h4>
+                    <div class="body-sm">"Our collection of handcrafted luxury playhouses and climbing frames is meticulously designed for the garden and built to inspire the imagination. With over 25 years of experience crafting the most extraordinary and unique wooden structures, we have mastered the art of creating outdoor spaces where adventure, creativity and fun begin."</div>
+                </li>
+                <li>
+                    <h4>The Modular Journey</h4>
+                    <div class="body-sm">We don't "upsell"; we evolve. "Start Small. Dream Big. Grow Often." We discuss "Modular Extensions" and building a "Grand Estate" that evolves with the family.</div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 03. VISUAL IDENTITY -->
+        <section id="visual">
+            <div class="section-label">03. Visual Identity System</div>
+            <h2 class="headline-xl">Structured elegance.</h2>
+
+            <div style="padding: var(--space-lg); background-color: white; border: 1px solid var(--portland-stone); text-align: center; margin-bottom: var(--space-md);">
+                <div class="brand-mark" style="font-size: 4rem;">BESPOKE</div>
+                <div class="sub-mark" style="font-size: 0.85rem;">Garden Play</div>
+            </div>
+
+            <div class="grid-asymmetric">
+                <div>
+                    <h3 class="headline-md">The Heritage Palette</h3>
+                    <p class="body-sm">Drawn directly from the British landscape. We banish bright, highly saturated greens and blues in favor of muted, Farrow & Ball-inspired tones to ensure the playcentre enhances your landscaping, not detracts from it.</p>
+                    <div class="swatch-grid">
+                        <div>
+                            <div class="swatch alabaster"></div>
+                            <div class="swatch-label">Alabaster</div>
+                            <div class="swatch-hex">#F7F6F2</div>
+                        </div>
+                        <div>
+                            <div class="swatch charcoal"></div>
+                            <div class="swatch-label">Charcoal</div>
+                            <div class="swatch-hex">#232323</div>
+                        </div>
+                        <div>
+                            <div class="swatch sage"></div>
+                            <div class="swatch-label">Smoked Sage</div>
+                            <div class="swatch-hex">#7A8B7C</div>
+                        </div>
+                        <div>
+                            <div class="swatch stone"></div>
+                            <div class="swatch-label">Portland Stone</div>
+                            <div class="swatch-hex">#D1CEC5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="type-specimen">
+                <div class="section-label">Primary Serif</div>
+                <div style="font-family: var(--font-serif); font-size: 4rem; line-height: 1.2; color: var(--charcoal);">Playfair Display</div>
+                <div style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--smoked-sage);">Aa Bb Cc Dd Ee Ff 0123456789</div>
+
+                <div class="section-label" style="margin-top: 3rem;">Secondary Sans-Serif</div>
+                <div style="font-family: var(--font-sans); font-size: 3rem; font-weight: 300; letter-spacing: -0.02em; color: var(--charcoal);">Inter (Light & Regular)</div>
+                <div style="font-family: var(--font-sans); font-size: 1rem; color: var(--smoked-sage); letter-spacing: 0.1em; text-transform: uppercase;">Aa Bb Cc Dd Ee Ff 0123456789</div>
+            </div>
+        </section>
+
+        <!-- 04. ART DIRECTION -->
+        <section id="photography">
+            <div class="section-label">04. Art Direction & Photography</div>
+            <h2 class="headline-xl">Atmosphere over architecture.</h2>
+            <p class="body-lg">We sell the feeling of owning a Bespoke playhouse. Real photography is tightly cropped to show craft; AI imagery builds the faceless, tactile lifestyle world.</p>
+
+            <div class="photo-grid">
+                <div class="photo-placeholder img-hero"></div>
+                <div>
+                    <div class="photo-placeholder img-detail"></div>
+                    <div class="photo-placeholder img-lifestyle"></div>
+                </div>
+            </div>
+
+            <div class="grid-2-col" style="margin-top: var(--space-sm);">
+                <div>
+                    <h3 class="headline-md">Real Photography</h3>
+                    <p class="body-sm">Abstract the structure. Emphasise the "Real House" philosophy by cropping tightly into the ply-lined interior or the Western Red Cedar shingles. Pull down saturation to match the Heritage Palette.</p>
+                </div>
+                <div>
+                    <h3 class="headline-md">AI Generation Prompts</h3>
+                    <p class="body-sm">Strictly faceless posing. Focus on tactile textures. Lighting must be overcast British daylight, golden hour, or dappled canopy light.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05. GRID & LAYOUT -->
+        <section id="layout">
+            <div class="section-label">05. The Grid & Layout System</div>
+            <h2 class="headline-xl">Alabaster Space.</h2>
+            <p class="body-lg">Empty space is an active design element. If a layout feels cramped, the perceived value of the product drops immediately.</p>
+            <ul class="editorial-list" style="margin-top: var(--space-md);">
+                <li>
+                    <h4>Asymmetric Balance</h4>
+                    <div class="body-sm">We abandon simple centred content. Balance a massive, sweeping headline with a tiny, precisely aligned paragraph spanning just a few columns.</div>
+                </li>
+                <li>
+                    <h4>Left-Aligned Strictness</h4>
+                    <div class="body-sm">Almost all typography must be left-aligned with a "ragged right" edge. Centred text feels static; left-alignment feels confident and architectural.</div>
+                </li>
+                <li>
+                    <h4>The Baseline Anchor</h4>
+                    <div class="body-sm">Elements across a page should visually anchor to the same invisible horizontal lines at their top or bottom edges.</div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 06. BRAND APPLICATION -->
+        <section id="application">
+            <div class="section-label">06. Brand Application</div>
+            <h2 class="headline-xl">The physical execution.</h2>
+            <p class="body-lg">From the Signature Series to the Masterpiece Collection, every touchpoint must feel as premium as the timber we craft.</p>
+            <ul class="editorial-list" style="margin-top: var(--space-md);">
+                <li>
+                    <h4>Social Media</h4>
+                    <div class="body-sm">
+                        <strong>Instagram:</strong> Feature a section titled "As Seen in the Wild" showing real customers' children playing in the structures, blended with our 3-to-1 grid rule.
+                    </div>
+                </li>
+                <li>
+                    <h4>Printed Portfolio</h4>
+                    <div class="body-sm">A heavy, perfect-bound book using uncoated, tactile paper stocks. Vast negative space inside, with "Guide Pricing & Investment" tucked away in an elegant index at the back.</div>
+                </li>
+                <li>
+                    <h4>Physical Touchpoints</h4>
+                    <div class="body-sm">
+                        <strong>The Maker's Mark:</strong> A small, aged-brass plaque affixed to every finished playhouse: <em>BESPOKE – Garden Play – Crafted in 2026</em>.
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SCROLL SPY                                 -->
+    <!-- ═══════════════════════════════════════════ -->
+    <script>
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute("id");
+                }
+            });
+            navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href").includes(current)) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
