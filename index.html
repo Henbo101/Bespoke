@@ -21,7 +21,7 @@
             --font-serif: 'Playfair Display', serif;
             --font-sans: 'Inter', sans-serif;
 
-            /* Spacing (Alabaster Space) */
+            /* Spacing (Fluid Variables) */
             --space-sm: 2rem;
             --space-md: 4rem;
             --space-lg: 8rem;
@@ -44,6 +44,7 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             display: flex;
+            flex-direction: row;
         }
 
         /* --- 02. LAYOUT ARCHITECTURE --- */
@@ -88,12 +89,20 @@
             margin-bottom: 0.5rem;
         }
 
+        .brand-mark-lg {
+            font-size: 4rem;
+        }
+
         .sub-mark {
             font-family: var(--font-sans);
             font-size: 0.65rem;
             letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--smoked-sage);
+        }
+
+        .sub-mark-lg {
+            font-size: 0.85rem;
         }
 
         .section-label {
@@ -242,61 +251,9 @@
             filter: sepia(20%) saturate(70%) contrast(90%);
         }
 
-        /*
-         * IMAGE CLASSES
-         * All images pull from two local asset folders:
-         *   assets/playhouse-imagery/  — Real photography (craft, structure, detail)
-         *   assets/ai-imagery/         — AI-generated lifestyle/atmosphere shots
-         *
-         * To swap an image: replace the file at the path below (keep the filename).
-         * Recommended: JPG, 1200px+ wide, <500KB optimised.
-         */
-        .img-hero {
-            height: 600px;
-            background-image: url('assets/playhouse-imagery/hero-structure.jpg');
-        }
-
-        .img-detail {
-            height: 290px;
-            background-image: url('assets/playhouse-imagery/interior-plywood-detail.jpg');
-        }
-
-        .img-lifestyle {
-            height: 290px;
-            background-image: url('assets/ai-imagery/garden-golden-hour-atmosphere.jpg');
-            margin-top: 1rem;
-        }
-
-        /* --- Additional image slots for future sections --- */
-        .img-cedar-shingles {
-            height: 400px;
-            background-image: url('assets/playhouse-imagery/cedar-shingle-closeup.jpg');
-        }
-
-        .img-workshop {
-            height: 400px;
-            background-image: url('assets/playhouse-imagery/workshop-craftsmanship.jpg');
-        }
-
-        .img-garden-wide {
-            height: 500px;
-            background-image: url('assets/ai-imagery/playhouse-in-landscaped-garden.jpg');
-        }
-
-        .img-child-texture {
-            height: 400px;
-            background-image: url('assets/ai-imagery/child-hands-on-timber-faceless.jpg');
-        }
-
-        .img-overcast-exterior {
-            height: 400px;
-            background-image: url('assets/ai-imagery/overcast-british-daylight-exterior.jpg');
-        }
-
-        .img-dappled-canopy {
-            height: 400px;
-            background-image: url('assets/ai-imagery/dappled-canopy-light-play.jpg');
-        }
+        .img-hero { height: 600px; background-image: url('assets/playhouse-imagery/hero-structure.jpg'); }
+        .img-detail { height: 290px; background-image: url('assets/playhouse-imagery/interior-plywood-detail.jpg'); }
+        .img-lifestyle { height: 290px; background-image: url('assets/ai-imagery/garden-golden-hour-atmosphere.jpg'); margin-top: 1rem;}
 
         /* --- 07. TYPE SPECIMEN --- */
         .type-specimen {
@@ -305,13 +262,97 @@
             padding: var(--space-md) 0;
             margin-top: var(--space-md);
         }
+
+        .type-primary-title { font-family: var(--font-serif); font-size: 4rem; line-height: 1.2; color: var(--charcoal); }
+        .type-primary-sample { font-family: var(--font-serif); font-size: 1.5rem; color: var(--smoked-sage); }
+        .type-secondary-title { font-family: var(--font-sans); font-size: 3rem; font-weight: 300; letter-spacing: -0.02em; color: var(--charcoal); }
+        .type-secondary-sample { font-family: var(--font-sans); font-size: 1rem; color: var(--smoked-sage); letter-spacing: 0.1em; text-transform: uppercase; }
+
+        /* --- 08. RESPONSIVE OPTIMIZATION --- */
+        
+        /* TABLET STYLES */
+        @media (max-width: 1024px) {
+            :root {
+                --space-sm: 1.5rem;
+                --space-md: 3rem;
+                --space-lg: 5rem;
+                --space-xl: 7rem;
+            }
+
+            .sidebar { width: 30vw; }
+            .main-content { margin-left: 30vw; width: 70vw; }
+            
+            .headline-xl { font-size: 3.5rem; }
+            .grid-asymmetric { grid-template-columns: 1fr; }
+            .editorial-list li { grid-template-columns: 1fr; gap: 0.5rem; }
+            .photo-grid { grid-template-columns: 1fr; }
+            .img-detail, .img-lifestyle { height: 400px; }
+            .swatch-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* MOBILE STYLES */
+        @media (max-width: 768px) {
+            :root {
+                --space-sm: 1.5rem;
+                --space-md: 2rem;
+                --space-lg: 3rem;
+                --space-xl: 4rem;
+            }
+
+            body {
+                flex-direction: column;
+            }
+
+            /* Shift Sidebar to a Top Header Navigation */
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--portland-stone);
+                padding: var(--space-md) var(--space-sm);
+            }
+
+            .nav-menu {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 1rem;
+                margin: 2rem 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+                padding-bottom: var(--space-xl);
+            }
+
+            section {
+                padding: var(--space-xl) var(--space-sm) 0 var(--space-sm);
+                min-height: auto;
+            }
+
+            /* Typography Scaling */
+            .headline-xl { font-size: 2.5rem; }
+            .headline-md { font-size: 2rem; }
+            .brand-mark-lg { font-size: 3rem; }
+            .body-lg { font-size: 1.1rem; }
+            
+            .type-primary-title { font-size: 2.5rem; }
+            .type-primary-sample { font-size: 1.25rem; }
+            .type-secondary-title { font-size: 2rem; }
+            .type-secondary-sample { font-size: 0.85rem; }
+
+            /* Grid Stacking */
+            .grid-2-col { grid-template-columns: 1fr; margin-top: var(--space-md); }
+            
+            /* Image Adjustments */
+            .img-hero { height: 400px; }
+            .img-detail, .img-lifestyle { height: 250px; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- ═══════════════════════════════════════════ -->
-    <!-- SIDEBAR NAVIGATION                         -->
-    <!-- ═══════════════════════════════════════════ -->
     <aside class="sidebar">
         <div>
             <div class="brand-mark">BESPOKE</div>
@@ -329,12 +370,8 @@
         </div>
     </aside>
 
-    <!-- ═══════════════════════════════════════════ -->
-    <!-- MAIN CONTENT                               -->
-    <!-- ═══════════════════════════════════════════ -->
     <main class="main-content">
 
-        <!-- 01. BRAND STRATEGY -->
         <section id="strategy">
             <div class="section-label">01. Brand Strategy & Positioning</div>
             <h2 class="headline-xl">We build architectural adventures.</h2>
@@ -343,7 +380,7 @@
             <div class="grid-2-col">
                 <div>
                     <h3 class="headline-md">The Archetype</h3>
-                    <p class="body-sm"><strong>Dedicated to heritage craftsmanship, uncompromising quality, and sustainable materials. We build for longevity, creating beautifully designed heirlooms built to outlast childhood.</p>
+                    <p class="body-sm"><strong>Dedicated to heritage craftsmanship, uncompromising quality, and sustainable materials.</strong> We build for longevity, creating beautifully designed heirlooms built to outlast childhood.</p>
                 </div>
                 <div>
                     <h3 class="headline-md">The Pillars</h3>
@@ -356,7 +393,6 @@
             </div>
         </section>
 
-        <!-- 02. VERBAL IDENTITY -->
         <section id="verbal">
             <div class="section-label">02. Verbal Identity & Messaging</div>
             <h2 class="headline-xl">Not just a playhouse. A piece of your home.</h2>
@@ -380,14 +416,13 @@
             </ul>
         </section>
 
-        <!-- 03. VISUAL IDENTITY -->
         <section id="visual">
             <div class="section-label">03. Visual Identity System</div>
             <h2 class="headline-xl">Structured elegance.</h2>
 
-            <div style="padding: var(--space-lg); background-color: white; border: 1px solid var(--portland-stone); text-align: center; margin-bottom: var(--space-md);">
-                <div class="brand-mark" style="font-size: 4rem;">BESPOKE</div>
-                <div class="sub-mark" style="font-size: 0.85rem;">Garden Play</div>
+            <div style="padding: var(--space-lg) var(--space-md); background-color: white; border: 1px solid var(--portland-stone); text-align: center; margin-bottom: var(--space-md);">
+                <div class="brand-mark brand-mark-lg">BESPOKE</div>
+                <div class="sub-mark sub-mark-lg">Garden Play</div>
             </div>
 
             <div class="grid-asymmetric">
@@ -421,16 +456,15 @@
 
             <div class="type-specimen">
                 <div class="section-label">Primary Serif</div>
-                <div style="font-family: var(--font-serif); font-size: 4rem; line-height: 1.2; color: var(--charcoal);">Playfair Display</div>
-                <div style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--smoked-sage);">Aa Bb Cc Dd Ee Ff 0123456789</div>
+                <div class="type-primary-title">Playfair Display</div>
+                <div class="type-primary-sample">Aa Bb Cc Dd Ee Ff 0123456789</div>
 
                 <div class="section-label" style="margin-top: 3rem;">Secondary Sans-Serif</div>
-                <div style="font-family: var(--font-sans); font-size: 3rem; font-weight: 300; letter-spacing: -0.02em; color: var(--charcoal);">Inter (Light & Regular)</div>
-                <div style="font-family: var(--font-sans); font-size: 1rem; color: var(--smoked-sage); letter-spacing: 0.1em; text-transform: uppercase;">Aa Bb Cc Dd Ee Ff 0123456789</div>
+                <div class="type-secondary-title">Inter (Light & Regular)</div>
+                <div class="type-secondary-sample">Aa Bb Cc Dd Ee Ff 0123456789</div>
             </div>
         </section>
 
-        <!-- 04. ART DIRECTION -->
         <section id="photography">
             <div class="section-label">04. Art Direction & Photography</div>
             <h2 class="headline-xl">Atmosphere over architecture.</h2>
@@ -456,7 +490,6 @@
             </div>
         </section>
 
-        <!-- 05. GRID & LAYOUT -->
         <section id="layout">
             <div class="section-label">05. The Grid & Layout System</div>
             <h2 class="headline-xl">Space.</h2>
@@ -477,13 +510,8 @@
             </ul>
         </section>
 
-
-
     </main>
 
-    <!-- ═══════════════════════════════════════════ -->
-    <!-- SCROLL SPY                                 -->
-    <!-- ═══════════════════════════════════════════ -->
     <script>
         const sections = document.querySelectorAll("section");
         const navLinks = document.querySelectorAll(".nav-link");
